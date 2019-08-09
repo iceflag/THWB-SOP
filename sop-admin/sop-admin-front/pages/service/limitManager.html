@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP Admin</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8"/>
+    <link rel="stylesheet" href="../../assets/css/font.css">
+    <link rel="stylesheet" href="../../assets/css/xadmin.css">
+    <style>
+        .layui-form-label{width: 100px;}
+        .layui-input-block{margin-left: 130px;}
+    </style>
+</head>
+<body>
+<div class="x-nav">
+    <span class="layui-breadcrumb">
+        <a href="../dashboard/welcome.html">首页</a>
+        <a><cite>服务管理</cite></a>
+        <a><cite>限流管理</cite></a>
+    </span>
+    <a class="layui-btn layui-btn-small layui-btn-normal" style="line-height:1.6em;margin-top:4px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+</div>
+<div class="x-body" style="padding-top:5px;">
+    <div class="layui-row">
+        <div class="layui-tab" lay-filter="serviceTabFilter" style="margin-top: 0;">
+            <ul id="serviceTab" class="layui-tab-title">
+            </ul>
+        </div>
+        <div class="layui-row">
+            <form class="layui-form layui-col-md12 x-so" action="" lay-filter="searchFrm">
+                路由名称：
+                <input name="id" class="layui-input" style="width: 200px;" placeholder="输入接口名或版本号">
+                <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="searchFilter">
+                    <i class="layui-icon layui-icon-search"></i>搜索
+                </button>
+            </form>
+        </div>
+
+        <table class="layui-hide" id="limitTable" lay-filter="limitTableFilter"></table>
+    </div>
+</div>
+
+<div id="updateWin" class="x-win">
+    <form id="updateForm" class="layui-form" action="" lay-filter="updateWinFilter">
+        <input type="hidden" name="serviceId">
+        <div class="layui-form-item">
+            <label class="layui-form-label">id</label>
+            <div class="layui-input-block">
+                <input type="text" name="routeId" readonly="readonly" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">限流策略</label>
+            <div class="layui-input-block">
+                <input type="radio" name="limitType" value="1" title="漏桶策略" lay-filter="limitTypeFilter">
+                <input type="radio" name="limitType" value="2" title="令牌桶策略" lay-filter="limitTypeFilter">
+            </div>
+        </div>
+        <div class="layui-form-item limit-type type1">
+            <label class="layui-form-label">每秒可处理请求数</label>
+            <div class="layui-input-block">
+                <input type="text" name="execCountPerSecond" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item limit-type type1">
+            <label class="layui-form-label">错误码</label>
+            <div class="layui-input-block">
+                <input type="text" name="limitCode" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item limit-type type1">
+            <label class="layui-form-label">错误信息</label>
+            <div class="layui-input-block">
+                <input type="text" name="limitMsg" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item limit-type type2">
+            <label class="layui-form-label">令牌桶容量</label>
+            <div class="layui-input-block">
+                <input type="text" name="tokenBucketCount" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开启状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="limitStatus" value="1" title="开启">
+                <input type="radio" name="limitStatus" value="0" title="关闭" checked="checked">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="updateWinSubmitFilter">保存</button>
+                <button type="button" class="layui-btn layui-btn-primary" onclick="layer.closeAll()">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="../../assets/js/lib.js"></script>
+<script type="text/javascript" src="limitManager.js"></script>
+</body>
+</html>

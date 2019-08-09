@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>SOP Admin</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8"/>
+    <link rel="stylesheet" href="../../assets/css/font.css">
+    <link rel="stylesheet" href="../../assets/css/xadmin.css">
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+          <a href="../dashboard/welcome.html">首页</a>
+          <a><cite>服务管理</cite></a>
+          <a><cite>服务列表</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small layui-btn-normal" style="line-height:1.6em;margin-top:4px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+</div>
+<div class="x-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so" action="" lay-filter="searchFrm">
+            服务名称：
+            <input name="serviceId" class="layui-input" style="width: 200px;" placeholder="输入服务名称（serviceId）">
+            <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="searchFilter">
+                <i class="layui-icon layui-icon-search"></i>搜索
+            </button>
+        </form>
+    </div>
+
+    <table class="layui-hide" id="treeTable" lay-filter="treeTableFilter"></table>
+
+</div>
+<script type="text/javascript" src="../../assets/js/lib.js"></script>
+<script type="text/javascript" src="serviceList.js"></script>
+<script>
+
+</script>
+</body>
+</html>
